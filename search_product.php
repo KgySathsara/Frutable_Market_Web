@@ -33,7 +33,7 @@ include "./function/commen_function.php";
                             <a class="nav-link text-light" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">Shop </a>
+                            <a class="nav-link text-light" href="./index.php">Shop </a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -64,9 +64,6 @@ include "./function/commen_function.php";
             </div>
         </nav>
         <!-- Nav Bar End -->
-        <?php
-        cart();  
-        ?>
         <hr class="dropdown-divider">
         <!--Header Section-->
         <div class="bg-dark p-1">
@@ -80,12 +77,11 @@ include "./function/commen_function.php";
             <div class="bg-ligh col-md-10 ">
                 <div class="row">
                     <?php
-                        getproducts();
+                        search_product();
                         get_unique_Vegetables();
                         get_unique_fruits();
                         get_unique_meats();
                         get_unique_organic();
-                        getIPAddress();
                     ?>
                 </div>
             </div>

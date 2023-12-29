@@ -18,29 +18,29 @@
         <!-- nav Bar -->
         <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../index.php">Navbar</a>
+                <a class="nav-link text-light" href="../index.php"><h3>Kgy Sathsara</h3></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link text-light" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Shop </a>
+                            <a class="nav-link text-light" href="#">Shop </a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop Details</a>
+                            <a class="nav-link text-light dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop Details</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Vegitables</a></li>
+                                <li><a class="dropdown-item" href="./Shop_Details/Vegitable.php">Vegitables</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Furits</a></li>
+                                <li><a class="dropdown-item" href="./Shop_Details/Furit.php">Furits</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Meats & Fish</a></li>
+                                <li><a class="dropdown-item" href="./Shop_Details/Meat_&_Fish.php">Meats & Fish</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Organic Products</a></li>
+                                <li><a class="dropdown-item" href="./Shop_Details/Organic_product.php">Organic Products</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -61,17 +61,14 @@
 
         <!--Content Section-->
         <div class="row">
-                <div class="col-md-12 bg-secondary p-2 d-flex align-items-center">
-                    <div class="AdminImg">
-                        <a href=""><img src="../img/Avatar.png" ></a>
-                        <p class="text-center text-light">Admin</p>
-                    </div>
-                    <div class="button text-center p-1  ">
+                <div class="col-md-12 bg-secondary p-2 d-flex align-items-center">                  
+                    <div class="button text-center p-4  ">
                         <button><a href="index.php?All_Products" class="nav-link text-light bg-info my-1">Insert All Products</a></button>
                         <button><a href="index.php?insert_Veg" class="nav-link text-light bg-info my-1">Insert Vegitables</a></button>
                         <button><a href="index.php?insert_Fruit" class="nav-link text-light bg-info my-1">Insert Fruits</a></button>
                         <button><a href="index.php?insert_Meat" class="nav-link text-light bg-info my-1">Insert Meats & Fishes</a></button>
                         <button><a href="index.php?insert_Products" class="nav-link text-light bg-info my-1">Insert Organic Products</a></button>
+                        <button><a href="" class="nav-link text-light bg-info my-1">Viwe Products</a></button>
                         <button><a href="" class="nav-link text-light bg-info my-1">Orders</a></button>
                         <button><a href="" class="nav-link text-light bg-info my-1">Payments</a></button>                 
                     </div>

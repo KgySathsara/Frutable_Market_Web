@@ -1,7 +1,3 @@
-<?php
-include('./includes/connection.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +34,7 @@ include('./includes/connection.php');
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop Details</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="Furit.php">Furits</a></li>
+                                <li><a class="dropdown-item" href="Vegitable.php">Vegetable</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="Meat_&_Fish.php">Meats & Fish</a></li>
                                 <li><hr class="dropdown-divider"></li>

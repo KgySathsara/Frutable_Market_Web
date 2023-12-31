@@ -31,7 +31,7 @@ function getproducts()
                                     <h5 class='card-title'>$p_name</h5>
                                     <p class='card-text'>$p_descrioption </p>
                                     <h6 class='card-text'>$p_price</h6>
-                                    <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add To Cart</a>
+                                    <a href='about.php?add_to_cart=$product_id' class='btn btn-primary'>Add To Cart</a>
                                 </div>
                             </div>
                         </div>";
@@ -77,7 +77,7 @@ function get_unique_Vegetables()
                         <h5 class='card-title'>$p_name</h5>
                         <p class='card-text'>$p_descrioption </p>
                         <h6 class='card-text'>$p_price</h6>
-                        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add To Cart</a>
+                        <a href='about.php?add_to_cart=$product_id' class='btn btn-primary'>Add To Cart</a>
                     </div>
                 </div>
             </div>";
@@ -120,8 +120,7 @@ function get_unique_fruits()
                 <h5 class='card-title'>$product_name</h5>
                 <p class='card-text'>$product_descrioption</p>
                 <h6 class='card-text'>$product_price</h6>
-                <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Card</a>
-                <a href='product_details.php?product_id=$product_id' class='btn btn-primary'>View Details</a>
+                <a href='about.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Card</a>
                 </div>
                 </div>
             </div>";
@@ -164,8 +163,7 @@ function get_unique_meats()
                 <h5 class='card-title'>$product_name</h5>
                 <p class='card-text'>$product_descrioption</p>
                 <h6 class='card-text'>$product_price</h6>
-                <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Card</a>
-                <a href='product_details.php?product_id=$product_id' class='btn btn-primary'>View Details</a>
+                <a href='about.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Card</a>
                 </div>
                 </div>
             </div>";
@@ -208,8 +206,7 @@ function get_unique_organic()
                         <h5 class='card-title'>$product_name</h5>
                         <p class='card-text'>$product_descrioption</p>
                         <h6 class='card-text'>$product_price</h6>
-                        <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Card</a>
-                        <a href='product_details.php?product_id=$product_id' class='btn btn-primary'>View Details</a>
+                        <a href='about.php?add_to_cart=$product_id' class='btn btn-primary'>Add to Card</a>
                     </div>
                 </div>
             </div>";
@@ -229,7 +226,7 @@ function getvegetables()
 
         // Display the brand list
         echo "<li class='nav-item bg-dark'>
-        <a class='nav-link text-light' href='index.php?veg=$veg_id'>$veg_name</a>
+        <a class='nav-link text-light' href='about.php?veg=$veg_id'>$veg_name</a>
         </li>";
     }
 }
@@ -245,7 +242,7 @@ function getfruits()
 
         // Display the category
         echo " <li class='nav-item bg-dark'>
-        <a class='nav-link text-light' href='index.php?fruit=$fruit_id'>$fruit_name</a>
+        <a class='nav-link text-light' href='about.php?fruit=$fruit_id'>$fruit_name</a>
         </li>";
     }
 }
@@ -261,7 +258,7 @@ function getmeats()
 
         // Display the category
         echo " <li class='nav-item bg-dark'>
-        <a class='nav-link text-light' href='index.php?meat=$meat_id'>$meat_name</a>
+        <a class='nav-link text-light' href='about.php?meat=$meat_id'>$meat_name</a>
         </li>";
     }
 }
@@ -277,7 +274,7 @@ function get_organicproducts()
 
         // Display the category
         echo " <li class='nav-item bg-dark'>
-        <a class='nav-link text-light' href='index.php?organic_products=$organic_id'> $product_name</a>
+        <a class='nav-link text-light' href='about.php?organic_products=$organic_id'> $product_name</a>
         </li>";
     }
 }
@@ -311,7 +308,7 @@ function search_product()
                 <h5 class='card-title'>$p_name</h5>
                 <p class='card-text'>$p_descrioption </p>
                 <h6 class='card-text'>$p_price</h6>
-                <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Add To Cart</a>
+                <a href='about.php?add_to_cart=$product_id' class='btn btn-primary'>Add To Cart</a>
             </div>
         </div>
     </div>";
@@ -355,7 +352,7 @@ function cart()
         $num_of_rows = mysqli_num_rows($run_query);
         if ($num_of_rows > 0) {
             echo "<script>alert('This item is already in the Cart')</script>";
-            echo "<script>window.open('index.php','_self')</script>";
+            echo "<script>window.open('about.php','_self')</script>";
         }
         else{
             $insert_query = "INSERT INTO `cart_details` (product_id, ip_address, quantity) VALUES($get_product_id, '$ip', 0)";
@@ -416,5 +413,98 @@ function total_cart_price()
         }
     }
     echo $total;
+}
+
+//loging function
+function login()
+{
+    // Check if the form is submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get user input
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        // Validate input (add more validation as needed)
+        $username = htmlspecialchars($username);
+        $password = htmlspecialchars($password);
+
+        // Check credentials against the database
+        $sql = "SELECT id FROM users WHERE username='$username' AND password='$password'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Successful login
+            echo "Login successful!";
+        } else {
+            // Invalid credentials
+            echo "Invalid username or password.";
+        }
+    }
+
+    // Close the database connection
+    $conn->close();
+}
+
+function Register()
+{
+    global $conn;
+    if (isset($_POST["submit"])) {
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $Repeat_password = $_POST["Repeat_password"];
+
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+        $errors = array();
+
+        // Corrected the conditions in the empty check
+        if (empty($name) || empty($email) || empty($password) || empty($Repeat_password)) {
+            array_push($errors, "All Fields are required");
+        }
+
+        // Corrected the typo in the filter_var function
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            array_push($errors, "Email is not valid");
+        }
+
+        if (strlen($password) < 8) {
+            array_push($errors, "Password must be at least 8 characters");
+        }
+
+        if ($password !== $Repeat_password) {
+            array_push($errors, "Password does not match");
+        }
+
+        require_once "./includes/connection.php";
+        $sql = "SELECT * FROM `login_register` WHERE email = '$email'";
+        $result = mysqli_query($conn, $sql);
+        $rowCount = mysqli_num_rows($result);
+        if($rowCount>0){
+            array_push($errors, "Email already Exists!!");
+        }
+        if (count($errors) > 0) {
+            foreach ($errors as $error) {
+                echo "<div class='alert alert-danger'>$error</div>";
+            }
+        } else {
+            
+            // Corrected the SQL query to include all three columns
+            $sql = "INSERT INTO `login_register` (`name`, `email`, `password`) VALUES (?, ?, ?)";
+            $stmt = mysqli_stmt_init($conn);
+
+            // Corrected the typo in the function name mysqli_stmt_prepare
+            $prepareStmt = mysqli_stmt_prepare($stmt, $sql);
+            if ($prepareStmt) {
+                // Updated the binding parameters to match the correct data types
+                mysqli_stmt_bind_param($stmt, "sss", $name, $email, $passwordHash);
+                mysqli_stmt_execute($stmt);
+                header("Location: index.php");
+                echo "<div class='alert alert-success'>Registered Successfully!!</div>";
+            } else {
+                die("Something went wrong!");
+            }
+        }
+    }
 }
 ?>

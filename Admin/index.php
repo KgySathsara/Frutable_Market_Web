@@ -18,7 +18,7 @@
         <!-- nav Bar -->
         <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
             <div class="container-fluid">
-                <a class="nav-link text-light" href="../index.php"><h3>Kgy Sathsara</h3></a>
+                <a class="nav-link text-light" href="#"><h3>Kgy Sathsara</h3></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -48,6 +48,10 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="../about.php">LogOut </a>
+                    </li>
                 </div>
             </div>
         </nav>
@@ -61,16 +65,16 @@
 
         <!--Content Section-->
         <div class="row">
-                <div class="col-md-12 bg-secondary p-2 d-flex align-items-center">                  
+                <div class="col-md-12 bg-dark p-2 d-flex align-items-center">                  
                     <div class="button text-center p-4  ">
-                        <button><a href="index.php?All_Products" class="nav-link text-light bg-info my-1">Insert All Products</a></button>
-                        <button><a href="index.php?insert_Veg" class="nav-link text-light bg-info my-1">Insert Vegitables</a></button>
-                        <button><a href="index.php?insert_Fruit" class="nav-link text-light bg-info my-1">Insert Fruits</a></button>
-                        <button><a href="index.php?insert_Meat" class="nav-link text-light bg-info my-1">Insert Meats & Fishes</a></button>
-                        <button><a href="index.php?insert_Products" class="nav-link text-light bg-info my-1">Insert Organic Products</a></button>
-                        <button><a href="" class="nav-link text-light bg-info my-1">Viwe Products</a></button>
-                        <button><a href="" class="nav-link text-light bg-info my-1">Orders</a></button>
-                        <button><a href="" class="nav-link text-light bg-info my-1">Payments</a></button>                 
+                        <button><a href="index.php?All_Products" class="nav-link text-light bg-dark my-1">Insert All Products</a></button>
+                        <button><a href="index.php?insert_Veg" class="nav-link text-light bg-dark my-1">Insert Vegitables</a></button>
+                        <button><a href="index.php?insert_Fruit" class="nav-link text-light bg-dark my-1">Insert Fruits</a></button>
+                        <button><a href="index.php?insert_Meat" class="nav-link text-light bg-dark my-1">Insert Meats & Fishes</a></button>
+                        <button><a href="index.php?insert_Products" class="nav-link text-light bg-dark my-1">Insert Organic Products</a></button>
+                        <button><a href="" class="nav-link text-light bg-dark my-1">Viwe Products</a></button>
+                        <button><a href="" class="nav-link text-light bg-dark my-1">Orders</a></button>
+                        <button><a href="" class="nav-link text-light bg-dark my-1">Payments</a></button>                 
                     </div>
                 </div>     
             </div>

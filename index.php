@@ -6,143 +6,118 @@ include "./function/commen_function.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--Bootstrap css-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- Font Awsome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
-    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Login Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
 </head>
 <body>
-    <div class="container-fluid p-0">
-        <!-- nav Bar -->
-        <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
-            <div class="container-fluid">
-                <a class="nav-link text-light" href="./Admin/index.php"><h3>Kgy Sathsara</h3></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="#">Shop </a>
-                        </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link text-light dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop Details</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="./Shop_Details/Vegitable.php">Vegitables</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="./Shop_Details/Furit.php">Furits</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="./Shop_Details/Meat_&_Fish.php">Meats & Fish</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="./Shop_Details/Organic_product.php">Organic Products</a></li>
-                            </ul>
-                        </li>
+<?php
+if (isset($_POST["login"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    require_once "./includes/connection.php";
+    $sql = "SELECT * FROM `login_register` WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    if ($user) {
+        if (password_verify($password, $user["password"])) {
+            header("Location:about.php"); // Corrected the space after Location
+            die();
+        } else {
+            echo "<script>alert('Password Does not Match !')</script>";
+        }
+    } else {
+        echo "<script>alert('Email Does not Match !')</script>";
+    }
+}
+?>
 
-                        <li class="nav-item">
-                            <a class="nav-link disabled"><i class="fa fa-cart-plus" aria-hidden="true"></i><sup><?php cart_items();?></sup></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-light "><h7>Total : <?php total_cart_price(); ?> Rs</h7></a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" action="search_product.php" method="GET">
-                        <input class="form-control me-2" type="search" name="search_data" placeholder="Search" aria-label="Search">
-                        <input type="submit" name="search_data_button" value="search" class="btn btn-outline-success">
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!-- Nav Bar End -->
-        <?php
-        cart();  
-        ?>
-        <hr class="dropdown-divider">
-        <!--Header Section-->
-        <div class="bg-dark p-1">
-            <h3 class="text-center  text-light ">Frutable-Market</h3>
-            <p class="text-center  text-light">100% Organic and Fresh Fruit & Vegetables For You.</p>
-        </div>
-        <!--Header Section End-->
-        <hr class="dropdown-divider">
-        <!--Content Section -->
-        <div class="row">
-            <div class="bg-ligh col-md-10 ">
-                <div class="row">
-                    <?php
-                        getproducts();
-                        get_unique_Vegetables();
-                        get_unique_fruits();
-                        get_unique_meats();
-                        get_unique_organic();
-                        getIPAddress();
-                    ?>
-                </div>
-            </div>
+	<div class="limiter">
+		<div class="container-login100 bg-info">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form"  method="POST" action="index.php">
+					<span class="login100-form-title p-b-26">Welcome</span>
+					<span class="login100-form-title p-b-48">
+						<i class="zmdi zmdi-font"></i>
+					</span>
 
-            <div class="col-md-2 bg-secondary p-0 bg-dark">
-                <!--list 1-->
-                <ul class="navbar-nav me-auto text-center">
-                    <li class="nav-item bg-secondary">
-                        <a class="nav-link text-light" href="#"><h4>Vegetables</h4></a>
-                    </li>
-                    <?php
-                        getvegetables();
-                    ?>
-                </ul>
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" name="email">
+						<span class="focus-input100" data-placeholder="Email"></span>
+					</div>
 
-                <!--list -->
-                <ul class="navbar-nav me-auto text-center">
-                    <li class="nav-item bg-secondary">
-                        <a class="nav-link text-light " href="#"><h4>Fruits</h4></a>
-                    </li>
-                    <?php
-                        getfruits();
-                    ?>
-                </ul>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="password">
+						<span class="focus-input100" data-placeholder="Password"></span>
+					</div>
 
-                <!--list 1-->
-                <ul class="navbar-nav me-auto text-center ">
-                    <li class="nav-item bg-secondary">
-                        <a class="nav-link text-light" href="#"><h4>Meats</h4></a>
-                    </li>
-                    <?php
-                        getmeats();
-                    ?>
-                </ul>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" name="login">
+								Login
+							</button>
+						</div>
+					</div>
 
-                <!--list 1-->
-                <ul class="navbar-nav me-auto text-center">
-                    <li class="nav-item  bg-secondary">
-                        <a class="nav-link text-light" href="#"><h4>Organic</h4></a>
-                    </li>
-                    <?php
-                        get_organicproducts();
-                    ?>
-                </ul>
-            </div>
-        </div>
-        <!--Content Section End-->
-        
-        <!-- footer Start-->
-        <div class="navbar-light bg-dark p-1 text-center"> 
-            <p class="bg-light p-1"><i class="fa fa-copyright p-1" ></i>All right reserved Designed by KgySathsara</p>
-        </div>
-        <!--Footer End-->
-    </div>
-    
-    <!--Boostrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+					<div class="text-center ">
+						<span class="txt1">
+							Don't have an account?
+						</span>
+
+						<a class="txt2" href="registration.php">
+							Sign Up
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 </body>
-</html> 
+</html>

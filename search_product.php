@@ -33,7 +33,7 @@ include "./function/commen_function.php";
                             <a class="nav-link text-light" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="./index.php">Shop </a>
+                            <a class="nav-link text-light" href="./about.php">Shop </a>
                         </li>
 
                         <li class="nav-item dropdown">

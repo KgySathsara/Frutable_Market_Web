@@ -30,7 +30,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">Shop </a>
+                            <a class="nav-link" href="../about.php">Shop </a>
                         </li>
 
                         <li class="nav-item dropdown">

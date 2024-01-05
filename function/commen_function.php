@@ -47,9 +47,9 @@ function get_unique_Vegetables()
 {
     global $conn;
 
-    if (isset($_GET["vegetables"])) {
+    if (isset($_GET["Vegetables"])) {
         //Condition to check if isset or not
-        $vegetable_id = $_GET["vegetables"];
+        $vegetable_id = $_GET["Vegetables"];
         $select_product_query = "SELECT * FROM `all_products_tb` WHERE veg_id = $vegetable_id ";
         $run_query = mysqli_query($conn, $select_product_query);
 
